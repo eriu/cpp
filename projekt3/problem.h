@@ -9,8 +9,9 @@ class Problem
 {
 public:
 	// Elementfunktionen
-    void einlesen (int Anzahl, int d, double **Matrix);
-    void entfernungsmatrix(int Anzahl, double **Matrix, double **Entfernungen);
+    int test(int a1, int b1);
+    void einlesen(int Anzahl, int d, double **Matrix);
+    void calc_distances(int Anzahl, double **Matrix, double **Entfernungen);
     void ausgabe();
 
 // Datenelemente
@@ -18,6 +19,9 @@ public:
   int d;                      // Eingabe welche Datei eingelesen werden soll
   double Matrix[39][2];
   double Entfernungen[39][39]; // Entferungsmatrix
+  int a1;
+  int b1;
+  int c1;
 
   private:
 

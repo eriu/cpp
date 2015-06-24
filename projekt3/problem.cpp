@@ -8,6 +8,13 @@
 #include <math.h>
 
 using namespace std;
+int problem::test(int a1, int b1)
+{
+  a1=1
+  b1=2
+  c1=a1+b1
+  return c1
+}
 
 void Problem::einlesen(int Anzahl, int d, double **Matrix)
 {
@@ -68,7 +75,7 @@ string dummy; 							// ersten 11 Zeilen der Inputdatei überspringen
 
 }
 
-void Problem::entfernungsmatrix(int Anzahl, double **Matrix, double **Entfernungen)
+void Problem::calc_distances(int Anzahl, double **Matrix, double **Entfernungen)
 {
   //Phytagoras
   for(int i = 0; i < Anzahl;i++)

@@ -18,9 +18,14 @@ using namespace std;
 int main()
 {
 	Problem tsp;
+	// tsp.test(Problem::a,Problem::b)
+	cout <<"\n c1=" << Problem::c1 << "\n";
+
+/*
 	tsp.einlesen(Problem::Anzahl, Problem::d, **Matrix);
-	tsp.entfernungsmatrix(Problem::Anzahl, **Matrix,  **Entfernungen);
+	tsp.calc_distances(Problem::Anzahl, **Matrix,  **Entfernungen);
 	// tsp.ausgabe( 1, 2, 3 );
+*/
 /*
 
 
