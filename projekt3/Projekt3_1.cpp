@@ -17,9 +17,10 @@ using namespace std;
 
 int main()
 {
-	einlesen();
-	entfernungsmatrix();
-	ausgabe();
+	Problem tsp;
+	tsp.einlesen(Problem::Anzahl, Problem::d, **Matrix);
+	tsp.entfernungsmatrix(Problem::Anzahl, **Matrix,  **Entfernungen);
+	// tsp.ausgabe( 1, 2, 3 );
 /*
 
 
