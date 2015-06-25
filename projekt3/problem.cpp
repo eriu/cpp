@@ -1,24 +1,14 @@
-// Funktionsdatei problem.cpp
-
-// Dateien einfügen
-#include <iostream>
+#include "problem.hpp"
 #include <string.h>
 #include <fstream>
-#include "problem.h"
+#include <iostream>
 #include <math.h>
 
 using namespace std;
-int problem::test(int a1, int b1)
-{
-  a1=1
-  b1=2
-  c1=a1+b1
-  return c1
-}
 
-void Problem::einlesen(int Anzahl, int d, double **Matrix)
+
+void Problem::einlesen()
 {
-  char trash;
   // Eingabe, ggf. Abbruch mit return
   cout  <<  "\nWelche Datei soll eingelesen werden?  \n";
   cout  <<  "\nbitte geb den Dateinamen an (1 oder 2)";
@@ -30,7 +20,7 @@ void Problem::einlesen(int Anzahl, int d, double **Matrix)
   //_getch();
   exit(1);}
 
-  char files[2][9]={"dj38.txt", "in6.txt"};   // Array bilden f�r die Dateinamen
+  char files[2][9]={"dj38.txt", "in6.txt"};   // Array bilden für die Dateinamen
 
   cout << "\noeffne Datei " << files[d-1] << "\n"; // Datei 1-3, Index 0-2
 
@@ -47,64 +37,66 @@ string dummy; 							// ersten 11 Zeilen der Inputdatei überspringen
    {
      getline(datei_input, dummy);
    }
-   datei_input >> Anzahl;
-   cout << Anzahl << "\n";
-   for(int i=0; i<Anzahl; i++)
-   {
-     datei_input >> trash; 				// Todo: in Struktur i mit datenfeld Knotennummer legen/initialisieren
-     datei_input.ignore();
+   datei_input >> anzahl;
+   cout << "\n Knotenanzahl:" << anzahl << "\n";
 
-     for(int j = 0; j<2; j++)
-     {
-       datei_input >> Matrix[i][j];
-      // Übertragung der Standortdaten in Standortmatrix
-     }
+   // Knotenlisten initialisieren mit Knotendaten
+   for(int i=0; i<anzahl; i++)
+   {
+     datei_input >> knotenliste[i].index;
+     datei_input >> knotenliste[i].x_coord;
+     datei_input >> knotenliste[i].y_coord;
    }
+
 // Ausgabe zum Debuggen
-  for(int i=0; i<Anzahl; i++)
-   {
-
-     for(int j = 0; j<2; j++)
-     {
-
-       cout << Matrix[i][j] << " ";
-     }
-     cout << "\n";
-   }
-
-
-}
-
-void Problem::calc_distances(int Anzahl, double **Matrix, double **Entfernungen)
-{
-  //Phytagoras
-  for(int i = 0; i < Anzahl;i++)
+  for(int i=0; i<anzahl; i++)
   {
-    for(int j = 0; j < Anzahl;j++)
-    {
-      if(i==j)
-      {
-      Entfernungen[i][j] = 99999999;
-      }
-      else
-      {
-      Entfernungen[i][j] =  sqrt(((Matrix[j][0] - Matrix[i][0])*(Matrix[j][0] - Matrix[i][0])) +((Matrix[j][1] - Matrix[i][1])*(Matrix[j][1] - Matrix[i][1])));
-      }
-    }
-  }
-
-// Ausgabe der Berechneten Entfernungen
-  for(int i = 0; i < Anzahl; i++)
-  {
-    for(int j = 0; j < Anzahl; j++)
-    {
-      cout << Entfernungen[i][j] << " ";
-    }
+    cout << knotenliste[i].index << "\t" << knotenliste[i].x_coord << "\t" << knotenliste[i].y_coord << "\n ";
     cout << "\n";
   }
 }
 
-void Problem::ausgabe()
+void Problem::calc_distances()
 {
+// Berechnen der Matrix
+//Phytagoras
+for(int i = 0; i < anzahl;i++)
+{
+  for(int j = 0; j < anzahl;j++)
+  {
+    if(i==j)
+    {
+    distance_matrix[i][j] = 99999999;
+    }
+    else
+    {
+      double distance_x = (knotenliste[i].x_coord-knotenliste[j].x_coord);
+      double distance_y = (knotenliste[i].y_coord-knotenliste[j].y_coord);
 
+    distance_matrix[i][j] =  sqrt((distance_x*distance_x)+(distance_y*distance_y));
+    }
+  }
+ }
+
+// Ausgabe der Berechneten Entfernungen
+cout << "\n Entfernungsmatrix:" << "\n ";
+  for(int i = 0; i < anzahl; i++)
+    {
+    for(int j = 0; j < anzahl; j++)
+      {
+        cout << distance_matrix[i][j] << " ";
+      }
+    cout << "\n";
+    }
 }
+
+int Problem::getanzahl()
+{
+  return anzahl;
+}
+/*
+double ** Problem::getdistance_matrix()
+{
+  return distance_matrix;
+}
+*/
