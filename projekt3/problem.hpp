@@ -1,6 +1,5 @@
 // Headerdatei problem.h
 
-// Dateien einfügen
 #ifndef _INC_problem_
 #define _INC_problem_
 #define strcpy_s strcpy
@@ -13,6 +12,11 @@ typedef struct
   double y_coord;
 } Knoten;
 
+typedef struct
+{
+  int index;
+  double weg;
+} Distance1;
 
 class Problem
 {
@@ -28,7 +32,7 @@ class Problem
 
     // weitere Elementfunktionen
     // public Variablen
-    double distance_matrix[MAX_KNOTEN][MAX_KNOTEN]; // Matrix definieren
+    Distance1 distance_matrix[MAX_KNOTEN][MAX_KNOTEN]; // Matrix definieren
 
 
   private:
@@ -36,8 +40,5 @@ class Problem
     int anzahl;
     Knoten knotenliste[MAX_KNOTEN]; // Pointer auf knotenliste
 
-
-
 };
-
 #endif // #define _INC_problem_

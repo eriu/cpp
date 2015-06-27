@@ -11,7 +11,7 @@ void Problem::einlesen()
 {
   // Eingabe, ggf. Abbruch mit return
   cout  <<  "\nWelche Datei soll eingelesen werden?  \n";
-  cout  <<  "\nbitte geb den Dateinamen an (1 oder 2)";
+  cout  <<  "\nbitte geb den Dateinamen an 1 (dj38.txt) oder 2 (in6.txt)";
   cin >> d;
 
   if (d <1|| d >2) // Check Eingabe, wenn ungueltig: Fehler ausgeben
@@ -51,49 +51,52 @@ string dummy; 							// ersten 11 Zeilen der Inputdatei überspringen
 // Ausgabe zum Debuggen
   for(int i=0; i<anzahl; i++)
   {
-    cout << knotenliste[i].index << "\t" << knotenliste[i].x_coord << "\t" << knotenliste[i].y_coord << "\n ";
-    cout << "\n";
-  }
+    cout <<"\n" <<knotenliste[i].index << "\t" << knotenliste[i].x_coord << "\t" << knotenliste[i].y_coord;
+  } cout <<"\n";
 }
+
 
 void Problem::calc_distances()
 {
 // Berechnen der Matrix
 //Phytagoras
-for(int i = 0; i < anzahl;i++)
-{
-  for(int j = 0; j < anzahl;j++)
+  for(int i = 0; i < anzahl;i++)
   {
-    if(i==j)
+    for(int j = 0; j < anzahl;j++)
+    // Knoten ID initialisieren in der Struktur distance_matrix.index
     {
-    distance_matrix[i][j] = 99999999;
-    }
-    else
-    {
+      if(i==j) // Diagonale befüllen
+      {
+        distance_matrix[i][j].weg = 0;                      // Distanz befüllen
+        distance_matrix[i][j].index = knotenliste[j].index; // Index befüllen
+      }
+      else
+      {
       double distance_x = (knotenliste[i].x_coord-knotenliste[j].x_coord);
       double distance_y = (knotenliste[i].y_coord-knotenliste[j].y_coord);
-
-    distance_matrix[i][j] =  sqrt((distance_x*distance_x)+(distance_y*distance_y));
+      distance_matrix[i][j].weg =  sqrt((distance_x*distance_x)+(distance_y*distance_y));
+      distance_matrix[i][j].index = knotenliste[j].index;
+    } // distance_matrix
     }
   }
- }
 
-// Ausgabe der Berechneten Entfernungen
+// Ausgabe der Berechneten Entfernungen & zugehörigen Indexes
 cout << "\n Entfernungsmatrix:" << "\n ";
   for(int i = 0; i < anzahl; i++)
     {
     for(int j = 0; j < anzahl; j++)
       {
-        cout << distance_matrix[i][j] << " ";
+        cout << distance_matrix[i][j].weg << "|" <<  distance_matrix[i][j].index << " ";
       }
     cout << "\n";
-    }
+  }
 }
 
 int Problem::getanzahl()
 {
   return anzahl;
 }
+
 /*
 double ** Problem::getdistance_matrix()
 {

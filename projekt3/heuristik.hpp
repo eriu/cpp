@@ -5,10 +5,10 @@
 #define _INC_heuristik_
 
 typedef struct {
-  int k;              //Nr des Knotens
+  int index;              //Nr des Knotens
   bool angefahren;    // 0 nicht angefahren, 1 angefahren
   double full_distance;
-}Status ;
+} Status;
 
 class Heuristik
 {
@@ -26,8 +26,8 @@ class Heuristik
   private:
     Problem problem;  // Zugriff auf bishere Instanz
     Status statusliste[MAX_KNOTEN];
+    // Distance1 distance;
 
     // Variablen
 };
-
 #endif // #define _INC_heuristik_
