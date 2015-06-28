@@ -2,14 +2,14 @@
 #include "heuristik.hpp"
 #include <iostream>
 #include <string>
+#include <iomanip>
+#include <math.h>
+#include <fstream>
 #ifndef __GNUC__
 #include <conio.h>
 #else
 #define _getch()
 #endif
-#include <iomanip>
-#include <math.h>
-#include <fstream>
 using namespace std;
 
 int main ()
@@ -19,7 +19,9 @@ int main ()
  problem.calc_distances();
 
  Heuristik heuristik;
- heuristik.set_problem(problem); // Zugriff auf die Instanz problem der Klasse Problem
+ heuristik.set_problem(problem);
+ heuristik.sort_matrix();
  heuristik.find_nachbar();
-  return 0;
+ heuristik.ergebnis();
+ return 0;
 }

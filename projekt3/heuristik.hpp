@@ -3,12 +3,23 @@
 // Dateien einfügen
 #ifndef _INC_heuristik_
 #define _INC_heuristik_
+#define MAX_KNOTEN 100
 
 typedef struct {
   int index;              //Nr des Knotens
   bool angefahren;    // 0 nicht angefahren, 1 angefahren
   double full_distance;
 } Status;
+
+struct City {
+    double x;
+    double y;
+};
+
+struct Distance {
+    int index;
+    double distance;
+};
 
 class Heuristik
 {
@@ -21,7 +32,9 @@ class Heuristik
     // lesende Zugriffsfunktionen
 
     // weitere Elementfunktionen
+    void sort_matrix();
     void find_nachbar();
+    void ergebnis();
 
   private:
     Problem problem;  // Zugriff auf bishere Instanz
