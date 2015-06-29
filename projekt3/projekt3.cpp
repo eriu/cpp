@@ -1,9 +1,9 @@
 #include "problem.hpp"
 #include "heuristik.hpp"
-#include <iostream>
-#include <string>
-#include <iomanip>
-#include <math.h>
+//#include <iostream>
+//#include <string>
+//#include <iomanip>
+//#include <math.h>
 #include <fstream>
 #ifndef __GNUC__
 #include <conio.h>
@@ -20,8 +20,8 @@ int main ()
 
  Heuristik heuristik;
  heuristik.set_problem(problem);
+ heuristik.orig_matrix();
  heuristik.sort_matrix();
  heuristik.find_nachbar();
- heuristik.ergebnis();
  return 0;
 }

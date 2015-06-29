@@ -3,6 +3,7 @@
 #include <fstream>
 #include <iostream>
 #include <math.h>
+#include <string>
 
 using namespace std;
 
@@ -11,7 +12,7 @@ void Problem::einlesen()
 {
   // Eingabe, ggf. Abbruch mit return
   cout  <<  "\nWelche Datei soll eingelesen werden?  \n";
-  cout  <<  "\nbitte geb den Dateinamen an 1 (dj38.txt) oder 2 (in6.txt)";
+  cout  <<  "\nbitte geb den Dateinamen an 1 (dj38.txt) oder 2 (in6.txt) \n";
   cin >> d;
 
   if (d <1|| d >2) // Check Eingabe, wenn ungueltig: Fehler ausgeben
@@ -76,7 +77,7 @@ void Problem::calc_distances()
       double distance_y = (knotenliste[i].y_coord-knotenliste[j].y_coord);
       distance_matrix[i][j].weg =  sqrt((distance_x*distance_x)+(distance_y*distance_y));
       distance_matrix[i][j].index = knotenliste[j].index;
-    } // distance_matrix
+    }
     }
   }
 
@@ -86,7 +87,7 @@ cout << "\n Entfernungsmatrix:" << "\n ";
     {
     for(int j = 0; j < anzahl; j++)
       {
-        cout << distance_matrix[i][j].weg << "|" <<  distance_matrix[i][j].index << " ";
+        cout << distance_matrix[i][j].weg  << "|" <<  distance_matrix[i][j].index  << " ";
       }
     cout << "\n";
   }
@@ -96,10 +97,3 @@ int Problem::getanzahl()
 {
   return anzahl;
 }
-
-/*
-double ** Problem::getdistance_matrix()
-{
-  return distance_matrix;
-}
-*/

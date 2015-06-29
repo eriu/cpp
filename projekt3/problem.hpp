@@ -25,18 +25,10 @@ class Problem
     void calc_distances();
     double ** getdistance_matrix();
     int getanzahl();
-    // Elementarfunktionen
-    // schreibende Zugriffsfunktionen
-
-    // lesende Zugriffsfunktionen
-
-    // weitere Elementfunktionen
-    // public Variablen
     Distance1 distance_matrix[MAX_KNOTEN][MAX_KNOTEN]; // Matrix definieren
 
-
   private:
-    int d; // welche Datei soll eingelesen werden
+    int d;      // welche Datei soll eingelesen werden
     int anzahl;
     Knoten knotenliste[MAX_KNOTEN]; // Pointer auf knotenliste
 
